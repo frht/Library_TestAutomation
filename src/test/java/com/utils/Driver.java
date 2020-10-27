@@ -9,8 +9,6 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class Driver {
 
-
-
     private Driver(){ }
 
     private static Object SafariDriver;
@@ -19,9 +17,8 @@ public class Driver {
 
     public static WebDriver getDriver(){
 
-        Browsers browser = Browsers.valueOf(ConfigurationsReader.getProperty("chrome"));
-
         if(driver == null){
+            Browsers browser = Browsers.valueOf(ConfigurationReader.getProperty("browser"));
             switch (browser){
                 case chrome:
                     WebDriverManager.chromedriver().setup();
@@ -45,7 +42,7 @@ public class Driver {
         return driver;
     }
 
-    public void closeDriver(){
+    public static void closeDriver(){
         if(driver!=null){
             driver.quit();
             driver=null;

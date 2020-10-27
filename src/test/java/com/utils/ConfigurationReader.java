@@ -4,20 +4,18 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfigurationsReader {
+public class ConfigurationReader {
 
 
     private static Properties properties = new Properties();
 
     static {
-
-        try {
-            FileInputStream file = new FileInputStream("configurations.properties");
+        try (FileInputStream file = new FileInputStream("configuration.properties")){
             properties.load(file);
-            file.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("The file was not found");
             e.printStackTrace();
+            throw new RuntimeException("Failed to load configuration.properties file");
         }
 
     }
