@@ -27,12 +27,10 @@ public class BooksDisplayed_StepDefinitions {
         Assert.assertEquals(actualList, expectedList);
     }
 
-
     @When("user selects {int} records per page")
     public void user_selects_records(Integer optionValue) {
         booksManagementPage.selectShowNumberOfRecordsDisplayed(optionValue);
     }
-
 
     @Then("user should see {int} books per page")
     public void user_should_see_books_per_page(Integer numberOfBooksDisplayed) {
@@ -50,4 +48,26 @@ public class BooksDisplayed_StepDefinitions {
     public void user_should_see_books_per_page_in_every_page(Integer expectedNumberOfBookPerPage) {
        booksManagementPage.allPagesContain(expectedNumberOfBookPerPage);
     }
+
+
+    //TODO
+    @When("user click on the header {string}")
+    public void user_click_on_the_header(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    //TODO
+    @Then("the header {string} should be sorted in ascending order")
+    public void the_header_should_be_sorted_in_ascending_order(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
+
+
+
+
+
 }

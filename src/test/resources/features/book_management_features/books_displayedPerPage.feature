@@ -22,7 +22,7 @@ Feature: Select amount of books to be displayed
     When user selects 500 records per page
     Then user should see 500 books per page
 
-  @Test
+
   Scenario Outline: User should be able to see the selected amount of books per page on every page
     And when user selects <number> records per page
     Then user should see <number> books per page in every page
@@ -36,8 +36,9 @@ Feature: Select amount of books to be displayed
     |200|
     |500|
 
+  @Test
   Scenario Outline: User should be able to sort the books by clicking on the header cells
-    When user click on header "<table header options>"
+    When user click on the header "<table header options>"
     Then the header "<table header options>" should be sorted in ascending order
     Examples:
     |table header options|
