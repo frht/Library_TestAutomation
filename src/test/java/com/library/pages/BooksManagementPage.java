@@ -26,18 +26,18 @@ public class BooksManagementPage extends BasePage{
     @FindBy(xpath = "//table[@id='tbl_books']//tbody/tr/td[5]")
     private List<WebElement> allBookCategoriesDisplayed;
 
-   @FindBy(xpath = "//select[@id='book_categories']")
-   private WebElement categoryDropdownButton;
+    @FindBy(xpath = "//select[@id='book_categories']")
+    private WebElement categoryDropdownButton;
 
-   public void selectCategory(String category){
-       Select select = BrowserUtils.getSelectDropdown(categoryDropdownButton);
-       select.selectByVisibleText(category);
-   }
+    @FindBy(xpath = "//a[@title='Next']/..")
+    private WebElement nextPageButton;
 
-   @FindBy(xpath = "//a[@title='Next']/..")
-   private WebElement nextPageButton;
+    public void selectCategory(String category){
+        Select select = BrowserUtils.getSelectDropdown(categoryDropdownButton);
+        select.selectByVisibleText(category);
+    }
 
-   public boolean clickNextPageButton(){
+    public boolean clickNextPageButton(){
         String value = wait.until(ExpectedConditions.visibilityOf(nextPageButton)).getAttribute("class");
        if (value.equals("page-item next")) {
            nextPageButton.click();
@@ -46,9 +46,7 @@ public class BooksManagementPage extends BasePage{
        return false;
    }
 
-
-
-   public void booksDisplayCategoryIsCorrect(String category){
+    public void booksDisplayCategoryIsCorrect(String category){
        if(category.equalsIgnoreCase("ALL")){
            Assert.assertTrue(true);
            return;
@@ -63,7 +61,7 @@ public class BooksManagementPage extends BasePage{
        } while (clickNextPageButton());
    }
 
-   public void clickCategoryDropDownButton(){
+    public void clickCategoryDropDownButton(){
        BrowserUtils.clickOnElement(categoryDropdownButton);
    }
 
@@ -72,13 +70,12 @@ public class BooksManagementPage extends BasePage{
         return BrowserUtils.getElementsText(options);
     }
 
-
     public void bookManagementSubtitleIsDisplayed(){
         WebElement subTitle = wait.until(ExpectedConditions.visibilityOf(bookManagementSubtitle));
         Assert.assertTrue(subTitle.isDisplayed());
     }
 
-    public List<String> getShowNumberOfRecordsOptionsList() {
+    public List<String> getNumberOfBooksToDisplayOptionList() {
         List<WebElement> options = BrowserUtils.getSelectDropdown(showRecordsSelectDropdown).getOptions();
         return BrowserUtils.getElementsText(options);
     }
@@ -93,7 +90,20 @@ public class BooksManagementPage extends BasePage{
     }
 
     public int currentNumberOfBooksDisplayed(){
-       return wait.until(ExpectedConditions.visibilityOfAllElements(allBookCategoriesDisplayed)).size();
+       return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElements(allBookCategoriesDisplayed))).size();
+    }
+
+    public boolean buttonNextIsEnable(){
+        return !wait.until(ExpectedConditions.visibilityOf(nextPageButton)).getAttribute("class").contains("disabled");
+    }
+
+    public void allPagesContain(Integer expectedNumberOfBookPerPage){
+        do{
+            Integer actual = currentNumberOfBooksDisplayed();
+            if(buttonNextIsEnable()){
+                Assert.assertEquals(expectedNumberOfBookPerPage, actual);
+            }
+        }while(clickNextPageButton());
     }
 
 
