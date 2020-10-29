@@ -1,7 +1,10 @@
 package com.utils;
 
+import io.cucumber.java.an.E;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,7 +26,7 @@ public class BrowserUtils {
      @return List<String>
      Method should be returning a list of Strings
      */
-    public static List<String> getElementsText(List<WebElement> list){
+    public synchronized static List<String> getElementsText(List<WebElement> list){
         List<String> WebElementsAsString = new ArrayList<>();
 
         for(WebElement each : list){
@@ -41,6 +44,16 @@ public class BrowserUtils {
     public static void clickOnElement(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
+
+    public static void doubleClickOnElement(WebElement element){
+
+        WebElement elementToDoubleClick = wait.until(ExpectedConditions.elementToBeClickable(element));
+        elementToDoubleClick.click();
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(elementToDoubleClick)));
+        elementToDoubleClick.click();
+    }
+
+
 
     /**
      * Method used for explicit wait

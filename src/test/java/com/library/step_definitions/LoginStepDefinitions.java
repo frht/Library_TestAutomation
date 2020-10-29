@@ -1,6 +1,5 @@
 package com.library.step_definitions;
 
-
 import com.library.pages.LoginPage;
 import com.utils.Driver;
 import io.cucumber.java.en.Given;
@@ -23,16 +22,12 @@ public class LoginStepDefinitions {
        loginPage.login(role);
     }
 
-
     @When("user verifies that  page title is {string}")
     public void user_verifies_that_page_title_is(String expectedPageTitle) {
        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
        Assert.assertTrue(wait.until(ExpectedConditions.titleIs(expectedPageTitle)));
 
     }
-
-
-
 
 
 

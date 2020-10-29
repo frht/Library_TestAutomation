@@ -16,6 +16,11 @@ public class BooksDisplayed_StepDefinitions {
         booksManagementPage.bookManagementSubtitleIsDisplayed();
     }
 
+    @Then("user should see books sorted in descending order by {string} number")
+    public void user_should_see_books_sorted_in_descending_order_by_number(String tableHeaderOption) {
+        Assert.assertTrue( booksManagementPage.booksSortedInDescendingOrderBy(tableHeaderOption));
+    }
+
     @When("user clicks on show records drop down menu")
     public void user_clicks_on_show_records_drop_down_menu() {
         booksManagementPage.clickShowNumberOfRecordDropdown();
@@ -29,7 +34,7 @@ public class BooksDisplayed_StepDefinitions {
 
     @When("user selects {int} records per page")
     public void user_selects_records(Integer optionValue) {
-        booksManagementPage.selectShowNumberOfRecordsDisplayed(optionValue);
+        booksManagementPage.selectNumberOfBooksToBeDisplay(optionValue);
     }
 
     @Then("user should see {int} books per page")
@@ -41,26 +46,32 @@ public class BooksDisplayed_StepDefinitions {
 
     @Given("when user selects {int} records per page")
     public void when_user_selects_records_per_page(Integer booksPerPage) {
-       booksManagementPage.selectShowNumberOfRecordsDisplayed(booksPerPage);
+       booksManagementPage.selectNumberOfBooksToBeDisplay(booksPerPage);
     }
 
     @Then("user should see {int} books per page in every page")
     public void user_should_see_books_per_page_in_every_page(Integer expectedNumberOfBookPerPage) {
-       booksManagementPage.allPagesContain(expectedNumberOfBookPerPage);
+       booksManagementPage.expectedNumberOfBookPerPage(expectedNumberOfBookPerPage);
     }
 
-
-    //TODO
     @When("user click on the header {string}")
-    public void user_click_on_the_header(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_click_on_the_header(String tableHeaderOption) {
+        booksManagementPage.clickOnHeader(tableHeaderOption);
     }
-    //TODO
-    @Then("the header {string} should be sorted in ascending order")
-    public void the_header_should_be_sorted_in_ascending_order(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+    @Then("the column {string} should be sorted in ascending order")
+    public void the_header_should_be_sorted_in_ascending_order(String tableHeaderOption) {
+        Assert.assertTrue(booksManagementPage.booksSortedInAscendingOrderBy(tableHeaderOption));
+    }
+
+    @When("user double clicks on the header {string}")
+    public void user_double_clicks_on_the_header(String headerOption) {
+        booksManagementPage.doubleClickOnHeader(headerOption);
+    }
+
+    @Then("the column {string} should be sorted in descending order")
+    public void the_column_should_be_sorted_in_descending_order(String headerOption) {
+       booksManagementPage.booksSortedInDescendingOrderBy(headerOption);
     }
 
 

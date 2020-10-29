@@ -23,8 +23,6 @@ public class LoginPage extends BasePage{
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
     }
 
-
-
     public void login(String role){
         String username = "";
         String password = "";
