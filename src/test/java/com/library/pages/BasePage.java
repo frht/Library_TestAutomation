@@ -40,11 +40,6 @@ public class BasePage {
             String currentUrl = Driver.getDriver().getCurrentUrl();
             if(currentUrl.contains("borrowing-books")){
                 System.out.println("Second Window");
-                try {
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }
         return Driver.getDriver().getWindowHandles();

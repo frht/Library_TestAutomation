@@ -56,7 +56,7 @@ public class BooksDisplayed_StepDefinitions {
 
     @When("user click on the header {string}")
     public void user_click_on_the_header(String tableHeaderOption) {
-        booksManagementPage.clickOnHeader(tableHeaderOption);
+        booksManagementPage.clickOnTableHeaderOption(tableHeaderOption);
     }
 
     @Then("the column {string} should be sorted in ascending order")

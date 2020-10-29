@@ -32,7 +32,7 @@ public class BorrowBooks_StepDefinitions {
 
     @Then("user should see the borrowed book displayed as “Not returned” and “Null” returned date")
     public void user_should_see_the_borrowed_book_displayed_as_not_returned_and_null_returned_date() {
-        borrowingBooksPage.lastBorrowedBookIsDisplayed(bookBorrowedInfo);
+        Assert.assertTrue(borrowingBooksPage.lastBorrowedBookIsDisplayed(bookBorrowedInfo));
     }
 
 }
