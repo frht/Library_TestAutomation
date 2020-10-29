@@ -1,6 +1,6 @@
 package com.library.pages;
 
-import com.utils.Driver;
+import com.library.utils.Driver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -48,6 +48,8 @@ public class BasePage {
     public void openBorrowingBooksInNewTab(){
        // String selectLinkOpenInNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN);
         //borrowingBooksTab.sendKeys(selectLinkOpenInNewTab);
+
+        //opening new tab with the href attribute of the elemtn
         String href = borrowingBooksTab.getAttribute("href");
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.open('"+href+"','_blank');");
     }

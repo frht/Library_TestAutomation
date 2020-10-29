@@ -1,7 +1,7 @@
 package com.library.pages;
 
-import com.utils.BrowserUtils;
-import com.utils.Driver;
+import com.library.utils.BrowserUtils;
+import com.library.utils.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

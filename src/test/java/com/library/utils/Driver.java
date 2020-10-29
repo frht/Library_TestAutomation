@@ -1,11 +1,9 @@
-package com.utils;
+package com.library.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.config.DriverManagerType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
 
 public class Driver {
 
@@ -32,13 +30,8 @@ public class Driver {
                     WebDriverManager.edgedriver().setup();
                     driver = new ChromeDriver();
                     break;
-                case safari:
-                    WebDriverManager.getInstance((DriverManagerType) SafariDriver).setup();
-                    driver = new SafariDriver();
-                    break;
             }
         }
-
         return driver;
     }
 

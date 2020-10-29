@@ -1,8 +1,7 @@
 package com.library.pages;
 
-import com.utils.BrowserUtils;
-import com.utils.Driver;
-import org.junit.Assert;
+import com.library.utils.BrowserUtils;
+import com.library.utils.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
