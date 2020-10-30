@@ -41,7 +41,6 @@ public class BooksDisplayed_StepDefinitions {
     public void user_should_see_books_per_page(Integer numberOfBooksDisplayed) {
         Integer actualNumberOfBook = booksManagementPage.currentNumberOfBooksDisplayed();
         Assert.assertEquals(actualNumberOfBook, numberOfBooksDisplayed);
-
     }
 
     @Given("when user selects {int} records per page")

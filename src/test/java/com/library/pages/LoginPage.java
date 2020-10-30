@@ -2,8 +2,10 @@ package com.library.pages;
 
 import com.library.utils.ConfigurationReader;
 import com.library.utils.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage{
@@ -36,6 +38,10 @@ public class LoginPage extends BasePage{
         emailInputBox.sendKeys(username);
         passwordInputBox.sendKeys(password);
         loginButtonElement.click();
+    }
+
+    public void verifyTitle(String expectedPageTitle){
+        Assert.assertTrue(wait.until(ExpectedConditions.titleIs(expectedPageTitle)));
     }
 
 

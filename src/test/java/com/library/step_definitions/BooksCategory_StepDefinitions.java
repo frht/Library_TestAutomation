@@ -17,12 +17,10 @@ public class BooksCategory_StepDefinitions {
         booksManagementPage.clickCategoryDropDownButton();
     }
 
-
     @Then("user should be able to see all the categories available")
     public void user_should_be_able_to_see_all_the_categories_available(List<String> expectedCategories) {
         Assert.assertEquals(expectedCategories, booksManagementPage.getCategoryOptionsList());
     }
-
 
     @When("user selects category {string} option")
     public void user_selects_option(String category) {

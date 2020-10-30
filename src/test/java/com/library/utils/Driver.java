@@ -9,8 +9,6 @@ public class Driver {
 
     private Driver(){ }
 
-    private static Object SafariDriver;
-
     private static WebDriver driver;
 
     public static WebDriver getDriver(){

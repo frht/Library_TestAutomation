@@ -1,12 +1,9 @@
 package com.library.step_definitions;
 
 import com.library.pages.LoginPage;
-import com.library.utils.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class LoginStepDefinitions {
 
@@ -24,11 +21,7 @@ public class LoginStepDefinitions {
 
     @When("user verifies that  page title is {string}")
     public void user_verifies_that_page_title_is(String expectedPageTitle) {
-       WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 5);
-       Assert.assertTrue(wait.until(ExpectedConditions.titleIs(expectedPageTitle)));
-
+        loginPage.verifyTitle(expectedPageTitle);
     }
-
-
 
 }
